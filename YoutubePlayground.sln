@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoutubePlayground.Main", "Main\YoutubePlayground.Main.csproj", "{1DB7F593-3C99-4171-A584-5234457E7351}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoutubePlayground.UI", "YoutubePlayground.UI\YoutubePlayground.UI.csproj", "{8EC8681D-F508-48D9-BFD2-7C1C8DCA7326}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1DB7F593-3C99-4171-A584-5234457E7351}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DB7F593-3C99-4171-A584-5234457E7351}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DB7F593-3C99-4171-A584-5234457E7351}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EC8681D-F508-48D9-BFD2-7C1C8DCA7326}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EC8681D-F508-48D9-BFD2-7C1C8DCA7326}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EC8681D-F508-48D9-BFD2-7C1C8DCA7326}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EC8681D-F508-48D9-BFD2-7C1C8DCA7326}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,2 +1,12 @@
 *.suo 
 *.user
+*.mp4
+Assets/SampleVideo_360x240_1mb.mp4
+client_secrets.json
+*.config
+client_secrets.json
+*.exe
+YoutubePlayground.UI/bin/Debug/YoutubePlayground.UI.pdb
+*.json
+Assets/resOversizedPancakeFlipper.txt
+*.json

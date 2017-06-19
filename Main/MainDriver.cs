@@ -31,15 +31,6 @@ using Google.Apis.YouTube.v3.Data;
 
 namespace YoutubePlayground
 {
-    /// <summary>
-    /// YouTube Data API v3 sample: search by keyword.
-    /// Relies on the Google APIs Client Library for .NET, v1.7.0 or higher.
-    /// See https://code.google.com/p/google-api-dotnet-client/wiki/GettingStarted
-    ///
-    /// Set ApiKey to the API key value from the APIs & auth > Registered apps tab of
-    ///   https://cloud.google.com/console
-    /// Please ensure that you have enabled the YouTube Data API for your project.
-    /// </summary>
     internal class MainDriver
     {
         [STAThread]
@@ -54,6 +45,19 @@ namespace YoutubePlayground
                 main.GetPlaylistID().Wait();
                 Console.WriteLine("look for channel = [" + main.currentPlaylistID+"]");
                 main.GetAllVideo().Wait();
+                bool isExit = false;
+                while (!isExit)
+                {
+                    Console.Write("Video to delete = ");
+                    char inputChar = Console.ReadKey().KeyChar;
+                    if (inputChar >= '0' && inputChar <= '9' )
+                    {
+                        main.RemoveVideo(main.videos[(inputChar - '1')]).Wait();                        
+                    }else
+                    {
+                        isExit = true;
+                    }
+                }
             }
             catch (AggregateException ex)
             {
@@ -62,13 +66,12 @@ namespace YoutubePlayground
                     Console.WriteLine("Error: " + e.Message);
                 }
             }
-
-            Console.WriteLine("Press any key to continue...");
-            Console.ReadKey();
+            
         }
 
 
         private string currentPlaylistID;
+        private List<String> videos = new List<String>();
         private async Task GetPlaylistID()
         {
             String result = "";
@@ -86,12 +89,28 @@ namespace YoutubePlayground
                 }
             }catch (Exception ex)
             {
-                throw new Exception("Failed to get the channel");
+                throw new Exception("Failed to get the channel \n ex = "+ex.Message);
             }
 
             currentPlaylistID = result;
         }
 
+        private async Task RemoveVideo(string videoID)
+        {
+            try
+            {
+                var youtubeService = await YoutubeServices.GetService();
+                var deleteVideo = youtubeService.Videos.Delete(videoID);
+                // call the delete video
+                var deleteResponse = await deleteVideo.ExecuteAsync();
+
+                Console.WriteLine(deleteResponse);
+
+            }catch (Exception ex)
+            {
+                throw new Exception("Failed to delete video \n ex = " + ex.Message);
+            }
+        }
         private async Task GetAllVideo()
         {
             var youtubeService = await YoutubeServices.GetService();
@@ -113,6 +132,7 @@ namespace YoutubePlayground
                     Console.WriteLine(searchResult.Snippet.Title);
                     Console.WriteLine(searchResult.Snippet.ResourceId.VideoId);
                     Console.WriteLine(searchResult.Snippet.PublishedAt);
+                    videos.Add(searchResult.Snippet.ResourceId.VideoId);
                     Console.WriteLine("------------------------------------");
                 }
             }
