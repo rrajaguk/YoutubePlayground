@@ -75,7 +75,7 @@ namespace YoutubePlayground.UI
 			if (!isAboutLoaded)
 			{
 				isAboutLoaded = true;
-				//new form().ShowDialog();
+                new MainForm().Show();
 				isAboutLoaded = false;
 			}
 		}

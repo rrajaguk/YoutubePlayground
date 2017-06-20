@@ -21,8 +21,6 @@ namespace YoutubePlayground.UI
             using (ProcessIcon pi = new ProcessIcon())
             {
                 pi.Display();
-                VideoFileWatcher VFW = new VideoFileWatcher();
-                VFW.watch();
                 // Make sure the application runs!
                 Application.Run();
             }
